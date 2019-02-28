@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!--웹폰트-->
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+    <!--부트스트랩-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CAULION:중앙대 멋쟁이사자처럼</title>
+    <link href="{% static 'css/main.css'%}" rel="stylesheet" type="text/css" >
+
+    <style>
+    #main_title{
+        font-family: 'Do Hyeon', sans-serif;
+        color: #ffffff;
+        font-size:50px;
+        text-align: center;
+    }
+
+    #logo{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #menu{
+        font-family: 'Nanum Gothic', sans-serif;
+
+    }
+
+    #account{
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+
+    a:link { color: white; text-decoration: none;}
+    a:visited { color: white; text-decoration: none;}
+    a:hover { color: white; text-decoration: none;}
+    
+    </style>
+</head>
+
+<body>
+    
+    <div id="account" align="right">
+
+        {% if user.is_authenticated %}
+
+        
+
+        <a href="javascript:{document.getElementById('logout').submit()}" style="color: grey;">로그아웃</a>
+        <form id="logout" method="POST" action="{% url 'account:logout'%}">
+            {% csrf_token %} <input type="hidden" />
+        </form>
+        {% else %}
+        <a href="{% url 'account:signup' %}" style="color: grey;">회원가입</a>&nbsp;&nbsp;
+        <a href="{% url 'account:login' %}" style="color: grey;">로그인</a>&nbsp;&nbsp;
+        
+        {% endif %}
+            
+        
+        
+       
+    </div>
+
+    <h1 id="main_title">CAULION<br>중앙대학교<br>멋쟁이사자처럼</h1>
+
+  <img id="logo" src="{% static 'css/image/logo.png' %}" width="280" height="280">
+
+    <center>
+        <br><br>
+  <div id="menu" class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary">커리큘럼</button>
+        <button type="button" class="btn btn-secondary">소개</button>
+        <button type="button" class="btn btn-secondary"><a href="{% url 'notice:show_list' %}">공지</a></button>
+        <button type="button" class="btn btn-secondary"><a href="{% url 'gallery:show_gallery' %}">갤러리</a></button>
+        <button type="button" class="btn btn-secondary">QnA</button>
+      </div>
+    </center>
+</body>
+</html>

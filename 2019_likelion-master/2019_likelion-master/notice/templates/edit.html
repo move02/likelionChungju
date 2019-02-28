@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CAULION:공지사항</title>
+    <link href="{% static 'css/main.css'%}" rel="stylesheet" type="text/css" >
+
+</head>
+<body>
+
+    <form action="{% url 'notice:edit' post.id %}" method="POST">
+    {% csrf_token %}
+    {{post_form.importance}}
+    제목:{{post_form.title}}
+    내용:{{post_form.content}}
+
+    <input type="submit" value="작성하기">
+    </form>
+</body>
+</html>

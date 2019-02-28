@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--웹폰트-->
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CAULION:공지사항</title>
+    <link href="{% static 'css/main.css'%}" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+
+    <style>
+        #menu_name{
+        display: inline;
+        font-family: 'Nanum Gothic', cursive;
+        font-size: 50px;
+        color: #ffffff;
+        }
+
+        #cau_logo{
+        margin-right: 0;
+        margin-left: auto;
+        }
+
+        thead{
+        background-color: #A4A4A4;
+        text-align: center;
+        vertical-align: middle;
+        }
+        tbody {
+        background-color: #D8D8D8;
+        text-align: center;
+        vertical-align: middle;
+        }
+
+        th,td {
+        font-family: 'Nanum Gothic', cursive;
+        color: black;
+        }  
+
+        a:link { color: black; text-decoration: none;}
+        a:visited { color: black; text-decoration: none;}
+        a:hover { color: black; text-decoration: none;}
+
+        #button{
+        font-family: 'Nanum Gothic', cursive;
+        font-weight:bold;
+        } 
+
+        #importance{
+        font-family: 'Nanum Gothic', cursive;
+        font-weight: bolder;
+        color: red;
+
+        }
+    
+    </style>   
+</head>
+<body>
+
+
+<!--
+<div align="right">
+<img id="cau_logo" src="{% static 'css/image/cau_lion.png' %}" width="20%" height="20%">
+</div>    
+-->
+
+
+<div class="container">
+
+<h1 id="menu_name">공지사항 <br><br></h1>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>중요</th>
+        <th>제목</th>
+        <th>날짜</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for post in post_s %}
+    <tr>
+    <td></td>
+    
+        {% if post.importance == True %}
+        <td id="importance">필독</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+
+    
+    <td><a href="{%url 'notice:read_detail' post.id %}">{{post.title}}</a></td>
+    <td>{{post.pub_date}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="container" align="center">
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+
+            {% if post_s.has_previous %}
+
+            <a class="page-link" href="?page={{post_s.previous_page_number}}" aria-label="이전">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+            </li>
+            
+            {% endif %}
+            
+            {% if post_s.has_next %}
+            <li class="page-item">
+            <a class="page-link" href="?page={{post_s.next_page_number}}" aria-label="다음">
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+            </li>
+            {% endif %}
+        </ul>
+        </nav>   
+
+</div>
+
+<button id="button" type="button" class="btn btn-secondary float-right"><a href="{% url 'notice:create' %}">글쓰기</a></button>
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

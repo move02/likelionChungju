@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--웹폰트-->
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CAULION:갤러리</title>
+    <link href="{% static 'css/main.css'%}" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style>
+            #menu_name{
+            display: inline;
+            font-family: 'Nanum Gothic', cursive;
+            font-size: 50px;
+            color: #ffffff;
+            }
+    </style>
+
+
+</head>
+<body>
+
+<div class="container">
+
+<h1 id="menu_name">갤러리 <br><br></h1>
+    {% for photo in photos %}
+    {% endfor %}
+    <main role="main">
+          
+            
+              <div class="container">
+          
+                <div class="row">
+                {% for photo in photos %}
+
+                  <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div OnClick="location.href ='read/{{photo.id}}'" style="cursor:pointer;" >
+
+                            <img src="{{photo.image.url}}" width="100%" height="225">
+                            <div class="card-body">
+                                <strong><p>{{photo.title}}</p></strong>
+                                <p class="card-text">{{photo.summary}}...</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">{{photo.pub_date}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                {% endfor %}  
+                </div>
+              </div>
+        
+          
+          </main>
+          
+          <footer class="text-muted">
+            <div class="container">
+              <p class="float-right">
+              </p>
+          </footer>
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script>window.jQuery || document.write('<script src="/docs/4.2/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script></body>
+          </html>
+    
+
+
+              
+    
+    
+</body>
+{% endblock%}

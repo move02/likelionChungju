@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--웹폰트-->
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CAULION:로그인</title>
+    <link href="{% static 'css/main.css'%}" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style>
+            #menu_name{
+            display: inline;
+            font-family: 'Nanum Gothic', cursive;
+            font-size: 50px;
+            color: #ffffff;
+            }
+
+            #detail_name{
+            font-family: 'Nanum Gothic', cursive;
+            color: #ffffff;
+            }
+    </style>
+
+
+</head>
+<body>
+    <div class="container">
+    <h1 id="menu_name">로그인 <br><br></h1>
+        <form action="{% url 'account:login' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label id="detail_name" for="email">Email address</label>
+                  <input name="user_email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label id="detail_name" for="password">Password</label>
+                  <input name="user_password" type="password" class="form-control" id="password" placeholder="Password">
+                </div> 
+                <button type="submit" class="btn btn-primary">로그인</button>
+        </form>
+    </div>
+
+
+</body>    
+
+
+
+{% endblock %}

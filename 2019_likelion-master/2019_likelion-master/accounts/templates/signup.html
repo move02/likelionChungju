@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--웹폰트-->
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&amp;subset=korean" rel="stylesheet">
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CAULION:회원가입</title>
+    <link href="{% static 'css/main.css'%}" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style>
+            #menu_name{
+            display: inline;
+            font-family: 'Nanum Gothic', cursive;
+            font-size: 50px;
+            color: #ffffff;
+            }
+
+            #detail_name{
+            font-family: 'Nanum Gothic', cursive;
+            color: #ffffff;
+            }
+    </style>
+
+
+</head>
+<body>
+
+        <div class="container">
+                <h1 id="menu_name">회원가입 <br><br></h1>
+                    <form action="{% url 'account:signup' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label id="detail_name" for="name">이름</label>
+                                <input name="user_name" type="text" class="form-control" placeholder="본명을 입력하세요.">
+                            </div>
+                            <div class="form-group">
+                              <label id="detail_name" for="email">Email address</label>
+                              <input name="user_email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div id="detail_name" class="form-group">
+                              <label for="password">Password</label>
+                              <input name="user_password" type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label id="detail_name" for="confirm">Password_Confirm</label>
+                                <input name="user_confirm"type="password" class="form-control" id="confirm" placeholder="Password_Confirm">
+                            </div>
+                            <button type="submit" class="btn btn-primary">가입</button>
+                    </form>
+        </div>
+</body>
+
+
+{% endblock %}
