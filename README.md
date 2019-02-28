@@ -11,19 +11,18 @@
 
 ***
 
-#### 1. 충북대 단과대 별 커뮤니티
+#### 1. 충북대 단과대 별 커뮤니티 (community-0.0.2-master)
   - 제작 : 이동영, 양동진, 박민, 남혜린, 조진명, 신혜란, 노기진, 김미선
   - github : https://github.com/cbnu-likelion/community-0.0.2
   - url : https://vast-oasis-86472.herokuapp.com/
 
-#### 2. 블로그 프로젝트
+#### 2. 블로그 프로젝트 (secondproject-master)
   - 제작 : 박민
   - github : https://github.com/LIKELIONMIN/secondproject
   - url : https://safe-fjord-67328.herokuapp.com/
 
-#### 3. 중앙대 멋사 커뮤니티
+#### 3. 중앙대 멋사 커뮤니티 (2019_likelion-master)
   - 제작 : 남혜린
   - github : https://github.com/HyelinNAM/2019_likelion
   - url : https://caulion.herokuapp.com/
 
-  
